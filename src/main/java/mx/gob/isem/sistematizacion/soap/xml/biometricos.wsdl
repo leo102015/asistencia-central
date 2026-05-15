@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://ws.biometrico.central.isem.gob.mx/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             name="BiometricosService"
+             targetNamespace="http://ws.biometrico.central.isem.gob.mx/">
+
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://ws.biometrico.central.isem.gob.mx/" schemaLocation="biometricos.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="ConsultarEmpleadosCambiosReq">
+        <part name="parameters" element="tns:ConsultarEmpleadosCambiosRequest"/>
+    </message>
+    <message name="ConsultarEmpleadosCambiosRes">
+        <part name="parameters" element="tns:ConsultarEmpleadosCambiosResponse"/>
+    </message>
+
+    <message name="SincronizarHuellaReq">
+        <part name="parameters" element="tns:SincronizarHuellaRequest"/>
+    </message>
+    <message name="SincronizarHuellaRes">
+        <part name="parameters" element="tns:SincronizarHuellaResponse"/>
+    </message>
+
+    <message name="SincronizarAsistenciasReq">
+        <part name="parameters" element="tns:SincronizarAsistenciasRequest"/>
+    </message>
+    <message name="SincronizarAsistenciasRes">
+        <part name="parameters" element="tns:SincronizarAsistenciasResponse"/>
+    </message>
+
+    <portType name="BiometricosPortType">
+        <operation name="consultarEmpleadosCambios">
+            <input message="tns:ConsultarEmpleadosCambiosReq"/>
+            <output message="tns:ConsultarEmpleadosCambiosRes"/>
+        </operation>
+        <operation name="sincronizarHuella">
+            <input message="tns:SincronizarHuellaReq"/>
+            <output message="tns:SincronizarHuellaRes"/>
+        </operation>
+        <operation name="sincronizarAsistencias">
+            <input message="tns:SincronizarAsistenciasReq"/>
+            <output message="tns:SincronizarAsistenciasRes"/>
+        </operation>
+    </portType>
+
+    <binding name="BiometricosBinding" type="tns:BiometricosPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        
+        <operation name="consultarEmpleadosCambios">
+            <soap:operation soapAction="http://ws.biometrico.central.isem.gob.mx/consultarEmpleadosCambios"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+        
+        <operation name="sincronizarHuella">
+            <soap:operation soapAction="http://ws.biometrico.central.isem.gob.mx/sincronizarHuella"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+
+        <operation name="sincronizarAsistencias">
+            <soap:operation soapAction="http://ws.biometrico.central.isem.gob.mx/sincronizarAsistencias"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+    </binding>
+
+    <service name="BiometricosService">
+        <port name="BiometricosPort" binding="tns:BiometricosBinding">
+            <soap:address location="http://localhost:8080/ws/biometricos"/>
+        </port>
+    </service>
+</definitions>

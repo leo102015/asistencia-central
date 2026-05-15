@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://ws.biometrico.central.isem.gob.mx/"
+	xmlns="http://ws.biometrico.central.isem.gob.mx/" 	
+	elementFormDefault="qualified">
+	
+	<xs:complexType name="Empleado">
+        <xs:sequence>
+        	<xs:element name="id" type="xs:string"/>
+        	<xs:element name="nombre" type="xs:string"/>
+        	<xs:element name="primerApellido" type="xs:string"/>
+        	<xs:element name="segundoApellido" type="xs:string"/>
+        	<xs:element name="rfc" type="xs:string"/>
+        	<xs:element name="rfid" type="xs:int"/>
+        	<xs:element name="agregado" type="xs:boolean" minOccurs="0" nillable="true"/>
+        	<xs:element name="modificado" type="xs:boolean" minOccurs="0" nillable="true"/>
+        	<xs:element name="eliminado" type="xs:boolean" minOccurs="0" nillable="true"/>
+        	<xs:element name="huellas" type="ListaHuellas" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ListaEmpleados">
+        <xs:sequence>
+            <xs:element name="empleado" type="Empleado" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Asistencia">
+        <xs:sequence>
+        	<xs:element name="idEmpleado" type="xs:string"/>
+        	<xs:element name="tiempo" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ListaAsistencias">
+        <xs:sequence>
+            <xs:element name="asistencia" type="Asistencia" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Huella">
+        <xs:sequence>
+        	<xs:element name="idEmpleado" type="xs:string"/>
+        	<xs:element name="indice" type="xs:int"/>
+        	<xs:element name="template" type="xs:base64Binary"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ListaHuellas">
+        <xs:sequence>
+            <xs:element name="huella" type="Huella" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="ConsultarEmpleadosCambiosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="centro" type="xs:string"/>
+                <xs:element name="empleados" type="ListaEmpleados"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ConsultarEmpleadosCambiosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empleados" type="ListaEmpleados"/>                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="SincronizarHuellaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="huella" type="Huella"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SincronizarHuellaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="procesada" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="SincronizarAsistenciasRequest">
+        <xs:complexType>
+            <xs:sequence>
+            	<xs:element name="cantidad" type="xs:int"/>
+                <xs:element name="asistencias" type="ListaAsistencias"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SincronizarAsistenciasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exito" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
