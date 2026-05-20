@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class ConexionBD {
 
     // Credenciales y cadena de conexión a SQL Server
-    private static final String URL = "jdbc:sqlserver://localhost;databaseName=DesaSistemasWeb;encrypt=true;trustServerCertificate=true";
-    private static final String USUARIO = "usuario"; 
-    private static final String PASSWORD = "password";
+    private static final String URL = "jdbc:sqlserver://***;databaseName=***;encrypt=true;trustServerCertificate=true";
+    private static final String USUARIO = "***"; 
+    private static final String PASSWORD = "***+";
 
     private static Connection conexion = null;
 
