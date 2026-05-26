@@ -59,4 +59,16 @@ public interface BiometricosPortType {
         @WebParam(name = "SincronizarAsistenciasRequest", targetNamespace = "http://ws.biometrico.central.isem.gob.mx/", partName = "parameters")
         SincronizarAsistenciasRequest parameters);
 
+    /**
+     * 
+     * @param parameters
+     * @return
+     *     returns mx.gob.isem.sistematizacion.soap.generated.ProbarConexionResponse
+     */
+    @WebMethod(action = "http://ws.biometrico.central.isem.gob.mx/probarConexion")
+    @WebResult(name = "ProbarConexionResponse", targetNamespace = "http://ws.biometrico.central.isem.gob.mx/", partName = "parameters")
+    public ProbarConexionResponse probarConexion(
+        @WebParam(name = "ProbarConexionRequest", targetNamespace = "http://ws.biometrico.central.isem.gob.mx/", partName = "parameters")
+        ProbarConexionRequest parameters);
+
 }

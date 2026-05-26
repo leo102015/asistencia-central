@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 
 public class AutenticacionCentralDAO {
 
-	public boolean validarCredenciales(String usuario, String password) {
+	public boolean validarCredenciales(String centro, String password) {
         String sql = """
     		SELECT 1 FROM ASISTENCIA.Autenticaciones
-    		 WHERE Usuario = ? AND Password = ?
+    		 WHERE Centro = ? AND Password = ?
     		""";        
         try (Connection con = ConexionBD.obtenerConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {            
-            ps.setString(1, usuario);
+            ps.setString(1, centro);
             ps.setString(2, password);            
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next();

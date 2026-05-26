@@ -32,6 +32,13 @@
     <message name="SincronizarAsistenciasRes">
         <part name="parameters" element="tns:SincronizarAsistenciasResponse"/>
     </message>
+    
+    <message name="ProbarConexionReq">
+        <part name="parameters" element="tns:ProbarConexionRequest"/>
+    </message>
+    <message name="ProbarConexionRes">
+        <part name="parameters" element="tns:ProbarConexionResponse"/>
+    </message>
 
     <portType name="BiometricosPortType">
         <operation name="consultarEmpleadosCambios">
@@ -45,6 +52,10 @@
         <operation name="sincronizarAsistencias">
             <input message="tns:SincronizarAsistenciasReq"/>
             <output message="tns:SincronizarAsistenciasRes"/>
+        </operation>
+        <operation name="probarConexion">
+            <input message="tns:ProbarConexionReq"/>
+            <output message="tns:ProbarConexionRes"/>
         </operation>
     </portType>
 
@@ -65,6 +76,12 @@
 
         <operation name="sincronizarAsistencias">
             <soap:operation soapAction="http://ws.biometrico.central.isem.gob.mx/sincronizarAsistencias"/>
+            <input><soap:body use="literal"/></input>
+            <output><soap:body use="literal"/></output>
+        </operation>
+        
+        <operation name="probarConexion">
+            <soap:operation soapAction="http://ws.biometrico.central.isem.gob.mx/probarConexion"/>
             <input><soap:body use="literal"/></input>
             <output><soap:body use="literal"/></output>
         </operation>

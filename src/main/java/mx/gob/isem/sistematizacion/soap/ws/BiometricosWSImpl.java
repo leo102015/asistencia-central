@@ -11,6 +11,8 @@ import mx.gob.isem.sistematizacion.soap.dao.AutenticacionCentralDAO;
 import mx.gob.isem.sistematizacion.soap.generated.BiometricosPortType;
 import mx.gob.isem.sistematizacion.soap.generated.ConsultarEmpleadosCambiosRequest;
 import mx.gob.isem.sistematizacion.soap.generated.ConsultarEmpleadosCambiosResponse;
+import mx.gob.isem.sistematizacion.soap.generated.ProbarConexionRequest;
+import mx.gob.isem.sistematizacion.soap.generated.ProbarConexionResponse;
 import mx.gob.isem.sistematizacion.soap.generated.SincronizarAsistenciasRequest;
 import mx.gob.isem.sistematizacion.soap.generated.SincronizarAsistenciasResponse;
 import mx.gob.isem.sistematizacion.soap.generated.SincronizarHuellaRequest;
@@ -75,6 +77,14 @@ public class BiometricosWSImpl implements BiometricosPortType{
 			SincronizarAsistenciasResponse response = new SincronizarAsistenciasResponse();
 			response.setExito(asistenciaService.insertarAsistencias(parameters.getAsistencias(), parameters.getCantidad()));	
 			return response;
+	}
+
+	@Override
+	public ProbarConexionResponse probarConexion(ProbarConexionRequest parameters) {
+		autenticarPeticion();
+		ProbarConexionResponse response = new ProbarConexionResponse();
+		response.setExito(true);
+		return response;
 	}
 	
 }

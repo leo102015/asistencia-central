@@ -102,5 +102,21 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    <xs:element name="ProbarConexionRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ping" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="ProbarConexionResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exito" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
 </xs:schema>

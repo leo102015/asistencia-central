@@ -213,7 +213,7 @@ public class Empleado {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Boolean }{@code >}
      *     
      */
     public JAXBElement<Boolean> getAgregado() {
@@ -225,7 +225,7 @@ public class Empleado {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     {@link JAXBElement }{@code <}{@link Boolean }{@code >}
      *     
      */
     public void setAgregado(JAXBElement<Boolean> value) {
